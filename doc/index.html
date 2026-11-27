@@ -1658,6 +1658,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.admin.v2.NetworkServiceIssuesRequest"><span class="badge">M</span>NetworkServiceIssuesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.NetworkServiceIssuesResponse"><span class="badge">M</span>NetworkServiceIssuesResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.admin.v2.NetworkServiceListRequest"><span class="badge">M</span>NetworkServiceListRequest</a>
                 </li>
               
@@ -14377,6 +14385,58 @@ If State set to available, description is also cleared. </p></td>
 
         
       
+        <h3 id="metalstack.admin.v2.NetworkServiceIssuesRequest">NetworkServiceIssuesRequest</h3>
+        <p>NetworkServiceIssuesRequest is the request payload for a network consistent housekeeping request.</p>
+
+        
+
+        
+      
+        <h3 id="metalstack.admin.v2.NetworkServiceIssuesResponse">NetworkServiceIssuesResponse</h3>
+        <p>HousekeepingServiceMachineResurrectResponse is the response payload for a network consistent housekeeping request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>networks_missing_in_ipam</td>
+                  <td><a href="#metalstack.api.v2.Network">metalstack.api.v2.Network</a></td>
+                  <td>repeated</td>
+                  <td><p>Networks missing in ipam </p></td>
+                </tr>
+              
+                <tr>
+                  <td>networks_missing_in_metal</td>
+                  <td><a href="#metalstack.api.v2.Network">metalstack.api.v2.Network</a></td>
+                  <td>repeated</td>
+                  <td><p>Networks missing in metal </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ips_missing_in_ipam</td>
+                  <td><a href="#metalstack.api.v2.IP">metalstack.api.v2.IP</a></td>
+                  <td>repeated</td>
+                  <td><p>IPs missing in ipam </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ips_missing_in_metal</td>
+                  <td><a href="#metalstack.api.v2.IP">metalstack.api.v2.IP</a></td>
+                  <td>repeated</td>
+                  <td><p>IPs missing in metal </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.admin.v2.NetworkServiceListRequest">NetworkServiceListRequest</h3>
         <p>NetworkServiceListRequest is the request payload for listing networks.</p>
 
@@ -14597,6 +14657,13 @@ If State set to available, description is also cleared. </p></td>
                 <td><a href="#metalstack.admin.v2.NetworkServiceListRequest">NetworkServiceListRequest</a></td>
                 <td><a href="#metalstack.admin.v2.NetworkServiceListResponse">NetworkServiceListResponse</a></td>
                 <td><p>Returns the list of all networks.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Issues</td>
+                <td><a href="#metalstack.admin.v2.NetworkServiceIssuesRequest">NetworkServiceIssuesRequest</a></td>
+                <td><a href="#metalstack.admin.v2.NetworkServiceIssuesResponse">NetworkServiceIssuesResponse</a></td>
+                <td><p>NetworksConsistent reports inconsistencies between the metal database and ipam</p></td>
               </tr>
             
           </tbody>

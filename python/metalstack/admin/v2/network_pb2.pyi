@@ -1,5 +1,6 @@
 from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
+from metalstack.api.v2 import ip_pb2 as _ip_pb2
 from metalstack.api.v2 import network_pb2 as _network_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from google.protobuf.internal import containers as _containers
@@ -123,3 +124,19 @@ class NetworkServiceListResponse(_message.Message):
     NETWORKS_FIELD_NUMBER: _ClassVar[int]
     networks: _containers.RepeatedCompositeFieldContainer[_network_pb2.Network]
     def __init__(self, networks: _Optional[_Iterable[_Union[_network_pb2.Network, _Mapping]]] = ...) -> None: ...
+
+class NetworkServiceIssuesRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class NetworkServiceIssuesResponse(_message.Message):
+    __slots__ = ("networks_missing_in_ipam", "networks_missing_in_metal", "ips_missing_in_ipam", "ips_missing_in_metal")
+    NETWORKS_MISSING_IN_IPAM_FIELD_NUMBER: _ClassVar[int]
+    NETWORKS_MISSING_IN_METAL_FIELD_NUMBER: _ClassVar[int]
+    IPS_MISSING_IN_IPAM_FIELD_NUMBER: _ClassVar[int]
+    IPS_MISSING_IN_METAL_FIELD_NUMBER: _ClassVar[int]
+    networks_missing_in_ipam: _containers.RepeatedCompositeFieldContainer[_network_pb2.Network]
+    networks_missing_in_metal: _containers.RepeatedCompositeFieldContainer[_network_pb2.Network]
+    ips_missing_in_ipam: _containers.RepeatedCompositeFieldContainer[_ip_pb2.IP]
+    ips_missing_in_metal: _containers.RepeatedCompositeFieldContainer[_ip_pb2.IP]
+    def __init__(self, networks_missing_in_ipam: _Optional[_Iterable[_Union[_network_pb2.Network, _Mapping]]] = ..., networks_missing_in_metal: _Optional[_Iterable[_Union[_network_pb2.Network, _Mapping]]] = ..., ips_missing_in_ipam: _Optional[_Iterable[_Union[_ip_pb2.IP, _Mapping]]] = ..., ips_missing_in_metal: _Optional[_Iterable[_Union[_ip_pb2.IP, _Mapping]]] = ...) -> None: ...

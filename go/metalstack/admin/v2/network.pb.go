@@ -726,11 +726,121 @@ func (x *NetworkServiceListResponse) GetNetworks() []*v2.Network {
 	return nil
 }
 
+// NetworkServiceIssuesRequest is the request payload for a network consistent housekeeping request.
+type NetworkServiceIssuesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkServiceIssuesRequest) Reset() {
+	*x = NetworkServiceIssuesRequest{}
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkServiceIssuesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkServiceIssuesRequest) ProtoMessage() {}
+
+func (x *NetworkServiceIssuesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkServiceIssuesRequest.ProtoReflect.Descriptor instead.
+func (*NetworkServiceIssuesRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{10}
+}
+
+// HousekeepingServiceMachineResurrectResponse is the response payload for a network consistent housekeeping request.
+type NetworkServiceIssuesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Networks missing in ipam
+	NetworksMissingInIpam []*v2.Network `protobuf:"bytes,1,rep,name=networks_missing_in_ipam,json=networksMissingInIpam,proto3" json:"networks_missing_in_ipam,omitempty"`
+	// Networks missing in metal
+	NetworksMissingInMetal []*v2.Network `protobuf:"bytes,2,rep,name=networks_missing_in_metal,json=networksMissingInMetal,proto3" json:"networks_missing_in_metal,omitempty"`
+	// IPs missing in ipam
+	IpsMissingInIpam []*v2.IP `protobuf:"bytes,3,rep,name=ips_missing_in_ipam,json=ipsMissingInIpam,proto3" json:"ips_missing_in_ipam,omitempty"`
+	// IPs missing in metal
+	IpsMissingInMetal []*v2.IP `protobuf:"bytes,4,rep,name=ips_missing_in_metal,json=ipsMissingInMetal,proto3" json:"ips_missing_in_metal,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *NetworkServiceIssuesResponse) Reset() {
+	*x = NetworkServiceIssuesResponse{}
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkServiceIssuesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkServiceIssuesResponse) ProtoMessage() {}
+
+func (x *NetworkServiceIssuesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkServiceIssuesResponse.ProtoReflect.Descriptor instead.
+func (*NetworkServiceIssuesResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *NetworkServiceIssuesResponse) GetNetworksMissingInIpam() []*v2.Network {
+	if x != nil {
+		return x.NetworksMissingInIpam
+	}
+	return nil
+}
+
+func (x *NetworkServiceIssuesResponse) GetNetworksMissingInMetal() []*v2.Network {
+	if x != nil {
+		return x.NetworksMissingInMetal
+	}
+	return nil
+}
+
+func (x *NetworkServiceIssuesResponse) GetIpsMissingInIpam() []*v2.IP {
+	if x != nil {
+		return x.IpsMissingInIpam
+	}
+	return nil
+}
+
+func (x *NetworkServiceIssuesResponse) GetIpsMissingInMetal() []*v2.IP {
+	if x != nil {
+		return x.IpsMissingInMetal
+	}
+	return nil
+}
+
 var File_metalstack_admin_v2_network_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a(metalstack/api/v2/predefined_rules.proto\"7\n" +
+	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1ametalstack/api/v2/ip.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a(metalstack/api/v2/predefined_rules.proto\"7\n" +
 	"\x18NetworkServiceGetRequest\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\"Q\n" +
 	"\x19NetworkServiceGetResponse\x124\n" +
@@ -800,7 +910,13 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x1cNetworkServiceDeleteResponse\x124\n" +
 	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"T\n" +
 	"\x1aNetworkServiceListResponse\x126\n" +
-	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks2\xe5\x04\n" +
+	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"\x1d\n" +
+	"\x1bNetworkServiceIssuesRequest\"\xd8\x02\n" +
+	"\x1cNetworkServiceIssuesResponse\x12S\n" +
+	"\x18networks_missing_in_ipam\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\x15networksMissingInIpam\x12U\n" +
+	"\x19networks_missing_in_metal\x18\x02 \x03(\v2\x1a.metalstack.api.v2.NetworkR\x16networksMissingInMetal\x12D\n" +
+	"\x13ips_missing_in_ipam\x18\x03 \x03(\v2\x15.metalstack.api.v2.IPR\x10ipsMissingInIpam\x12F\n" +
+	"\x14ips_missing_in_metal\x18\x04 \x03(\v2\x15.metalstack.api.v2.IPR\x11ipsMissingInMetal2\xdf\x05\n" +
 	"\x0eNetworkService\x12p\n" +
 	"\x03Get\x12-.metalstack.admin.v2.NetworkServiceGetRequest\x1a..metalstack.admin.v2.NetworkServiceGetResponse\"\n" +
 	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12x\n" +
@@ -808,7 +924,8 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x06Update\x120.metalstack.admin.v2.NetworkServiceUpdateRequest\x1a1.metalstack.admin.v2.NetworkServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12x\n" +
 	"\x06Delete\x120.metalstack.admin.v2.NetworkServiceDeleteRequest\x1a1.metalstack.admin.v2.NetworkServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12s\n" +
 	"\x04List\x12..metalstack.admin.v2.NetworkServiceListRequest\x1a/.metalstack.admin.v2.NetworkServiceListResponse\"\n" +
-	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02B\xd0\x01\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12x\n" +
+	"\x06Issues\x120.metalstack.admin.v2.NetworkServiceIssuesRequest\x1a1.metalstack.admin.v2.NetworkServiceIssuesResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01B\xd0\x01\n" +
 	"\x17com.metalstack.admin.v2B\fNetworkProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 
 var (
@@ -823,7 +940,7 @@ func file_metalstack_admin_v2_network_proto_rawDescGZIP() []byte {
 	return file_metalstack_admin_v2_network_proto_rawDescData
 }
 
-var file_metalstack_admin_v2_network_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_metalstack_admin_v2_network_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_metalstack_admin_v2_network_proto_goTypes = []any{
 	(*NetworkServiceGetRequest)(nil),     // 0: metalstack.admin.v2.NetworkServiceGetRequest
 	(*NetworkServiceGetResponse)(nil),    // 1: metalstack.admin.v2.NetworkServiceGetResponse
@@ -835,50 +952,59 @@ var file_metalstack_admin_v2_network_proto_goTypes = []any{
 	(*NetworkServiceUpdateResponse)(nil), // 7: metalstack.admin.v2.NetworkServiceUpdateResponse
 	(*NetworkServiceDeleteResponse)(nil), // 8: metalstack.admin.v2.NetworkServiceDeleteResponse
 	(*NetworkServiceListResponse)(nil),   // 9: metalstack.admin.v2.NetworkServiceListResponse
-	(*v2.Network)(nil),                   // 10: metalstack.api.v2.Network
-	(v2.NetworkType)(0),                  // 11: metalstack.api.v2.NetworkType
-	(*v2.Labels)(nil),                    // 12: metalstack.api.v2.Labels
-	(*v2.ChildPrefixLength)(nil),         // 13: metalstack.api.v2.ChildPrefixLength
-	(v2.NATType)(0),                      // 14: metalstack.api.v2.NATType
-	(v2.NetworkAddressFamily)(0),         // 15: metalstack.api.v2.NetworkAddressFamily
-	(*v2.UpdateMeta)(nil),                // 16: metalstack.api.v2.UpdateMeta
-	(*v2.UpdateLabels)(nil),              // 17: metalstack.api.v2.UpdateLabels
-	(*v2.NetworkQuery)(nil),              // 18: metalstack.api.v2.NetworkQuery
+	(*NetworkServiceIssuesRequest)(nil),  // 10: metalstack.admin.v2.NetworkServiceIssuesRequest
+	(*NetworkServiceIssuesResponse)(nil), // 11: metalstack.admin.v2.NetworkServiceIssuesResponse
+	(*v2.Network)(nil),                   // 12: metalstack.api.v2.Network
+	(v2.NetworkType)(0),                  // 13: metalstack.api.v2.NetworkType
+	(*v2.Labels)(nil),                    // 14: metalstack.api.v2.Labels
+	(*v2.ChildPrefixLength)(nil),         // 15: metalstack.api.v2.ChildPrefixLength
+	(v2.NATType)(0),                      // 16: metalstack.api.v2.NATType
+	(v2.NetworkAddressFamily)(0),         // 17: metalstack.api.v2.NetworkAddressFamily
+	(*v2.UpdateMeta)(nil),                // 18: metalstack.api.v2.UpdateMeta
+	(*v2.UpdateLabels)(nil),              // 19: metalstack.api.v2.UpdateLabels
+	(*v2.NetworkQuery)(nil),              // 20: metalstack.api.v2.NetworkQuery
+	(*v2.IP)(nil),                        // 21: metalstack.api.v2.IP
 }
 var file_metalstack_admin_v2_network_proto_depIdxs = []int32{
-	10, // 0: metalstack.admin.v2.NetworkServiceGetResponse.network:type_name -> metalstack.api.v2.Network
-	11, // 1: metalstack.admin.v2.NetworkServiceCreateRequest.type:type_name -> metalstack.api.v2.NetworkType
-	12, // 2: metalstack.admin.v2.NetworkServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
-	13, // 3: metalstack.admin.v2.NetworkServiceCreateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	13, // 4: metalstack.admin.v2.NetworkServiceCreateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	14, // 5: metalstack.admin.v2.NetworkServiceCreateRequest.nat_type:type_name -> metalstack.api.v2.NATType
-	13, // 6: metalstack.admin.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
-	15, // 7: metalstack.admin.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.NetworkAddressFamily
-	16, // 8: metalstack.admin.v2.NetworkServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
-	17, // 9: metalstack.admin.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
-	13, // 10: metalstack.admin.v2.NetworkServiceUpdateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	13, // 11: metalstack.admin.v2.NetworkServiceUpdateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	14, // 12: metalstack.admin.v2.NetworkServiceUpdateRequest.nat_type:type_name -> metalstack.api.v2.NATType
-	18, // 13: metalstack.admin.v2.NetworkServiceListRequest.query:type_name -> metalstack.api.v2.NetworkQuery
-	10, // 14: metalstack.admin.v2.NetworkServiceCreateResponse.network:type_name -> metalstack.api.v2.Network
-	10, // 15: metalstack.admin.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
-	10, // 16: metalstack.admin.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
-	10, // 17: metalstack.admin.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
-	0,  // 18: metalstack.admin.v2.NetworkService.Get:input_type -> metalstack.admin.v2.NetworkServiceGetRequest
-	2,  // 19: metalstack.admin.v2.NetworkService.Create:input_type -> metalstack.admin.v2.NetworkServiceCreateRequest
-	3,  // 20: metalstack.admin.v2.NetworkService.Update:input_type -> metalstack.admin.v2.NetworkServiceUpdateRequest
-	4,  // 21: metalstack.admin.v2.NetworkService.Delete:input_type -> metalstack.admin.v2.NetworkServiceDeleteRequest
-	5,  // 22: metalstack.admin.v2.NetworkService.List:input_type -> metalstack.admin.v2.NetworkServiceListRequest
-	1,  // 23: metalstack.admin.v2.NetworkService.Get:output_type -> metalstack.admin.v2.NetworkServiceGetResponse
-	6,  // 24: metalstack.admin.v2.NetworkService.Create:output_type -> metalstack.admin.v2.NetworkServiceCreateResponse
-	7,  // 25: metalstack.admin.v2.NetworkService.Update:output_type -> metalstack.admin.v2.NetworkServiceUpdateResponse
-	8,  // 26: metalstack.admin.v2.NetworkService.Delete:output_type -> metalstack.admin.v2.NetworkServiceDeleteResponse
-	9,  // 27: metalstack.admin.v2.NetworkService.List:output_type -> metalstack.admin.v2.NetworkServiceListResponse
-	23, // [23:28] is the sub-list for method output_type
-	18, // [18:23] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	12, // 0: metalstack.admin.v2.NetworkServiceGetResponse.network:type_name -> metalstack.api.v2.Network
+	13, // 1: metalstack.admin.v2.NetworkServiceCreateRequest.type:type_name -> metalstack.api.v2.NetworkType
+	14, // 2: metalstack.admin.v2.NetworkServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
+	15, // 3: metalstack.admin.v2.NetworkServiceCreateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	15, // 4: metalstack.admin.v2.NetworkServiceCreateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	16, // 5: metalstack.admin.v2.NetworkServiceCreateRequest.nat_type:type_name -> metalstack.api.v2.NATType
+	15, // 6: metalstack.admin.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
+	17, // 7: metalstack.admin.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.NetworkAddressFamily
+	18, // 8: metalstack.admin.v2.NetworkServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
+	19, // 9: metalstack.admin.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	15, // 10: metalstack.admin.v2.NetworkServiceUpdateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	15, // 11: metalstack.admin.v2.NetworkServiceUpdateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	16, // 12: metalstack.admin.v2.NetworkServiceUpdateRequest.nat_type:type_name -> metalstack.api.v2.NATType
+	20, // 13: metalstack.admin.v2.NetworkServiceListRequest.query:type_name -> metalstack.api.v2.NetworkQuery
+	12, // 14: metalstack.admin.v2.NetworkServiceCreateResponse.network:type_name -> metalstack.api.v2.Network
+	12, // 15: metalstack.admin.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
+	12, // 16: metalstack.admin.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
+	12, // 17: metalstack.admin.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
+	12, // 18: metalstack.admin.v2.NetworkServiceIssuesResponse.networks_missing_in_ipam:type_name -> metalstack.api.v2.Network
+	12, // 19: metalstack.admin.v2.NetworkServiceIssuesResponse.networks_missing_in_metal:type_name -> metalstack.api.v2.Network
+	21, // 20: metalstack.admin.v2.NetworkServiceIssuesResponse.ips_missing_in_ipam:type_name -> metalstack.api.v2.IP
+	21, // 21: metalstack.admin.v2.NetworkServiceIssuesResponse.ips_missing_in_metal:type_name -> metalstack.api.v2.IP
+	0,  // 22: metalstack.admin.v2.NetworkService.Get:input_type -> metalstack.admin.v2.NetworkServiceGetRequest
+	2,  // 23: metalstack.admin.v2.NetworkService.Create:input_type -> metalstack.admin.v2.NetworkServiceCreateRequest
+	3,  // 24: metalstack.admin.v2.NetworkService.Update:input_type -> metalstack.admin.v2.NetworkServiceUpdateRequest
+	4,  // 25: metalstack.admin.v2.NetworkService.Delete:input_type -> metalstack.admin.v2.NetworkServiceDeleteRequest
+	5,  // 26: metalstack.admin.v2.NetworkService.List:input_type -> metalstack.admin.v2.NetworkServiceListRequest
+	10, // 27: metalstack.admin.v2.NetworkService.Issues:input_type -> metalstack.admin.v2.NetworkServiceIssuesRequest
+	1,  // 28: metalstack.admin.v2.NetworkService.Get:output_type -> metalstack.admin.v2.NetworkServiceGetResponse
+	6,  // 29: metalstack.admin.v2.NetworkService.Create:output_type -> metalstack.admin.v2.NetworkServiceCreateResponse
+	7,  // 30: metalstack.admin.v2.NetworkService.Update:output_type -> metalstack.admin.v2.NetworkServiceUpdateResponse
+	8,  // 31: metalstack.admin.v2.NetworkService.Delete:output_type -> metalstack.admin.v2.NetworkServiceDeleteResponse
+	9,  // 32: metalstack.admin.v2.NetworkService.List:output_type -> metalstack.admin.v2.NetworkServiceListResponse
+	11, // 33: metalstack.admin.v2.NetworkService.Issues:output_type -> metalstack.admin.v2.NetworkServiceIssuesResponse
+	28, // [28:34] is the sub-list for method output_type
+	22, // [22:28] is the sub-list for method input_type
+	22, // [22:22] is the sub-list for extension type_name
+	22, // [22:22] is the sub-list for extension extendee
+	0,  // [0:22] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_network_proto_init() }
@@ -894,7 +1020,7 @@ func file_metalstack_admin_v2_network_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_admin_v2_network_proto_rawDesc), len(file_metalstack_admin_v2_network_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

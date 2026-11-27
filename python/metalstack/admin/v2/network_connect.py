@@ -33,6 +33,9 @@ class NetworkService(Protocol):
     async def list(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def issues(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class NetworkServiceASGIApplication(ConnectASGIApplication[NetworkService]):
     def __init__(self, service: NetworkService | AsyncGenerator[NetworkService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
@@ -88,6 +91,16 @@ class NetworkServiceASGIApplication(ConnectASGIApplication[NetworkService]):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.list,
+                ),
+                "/metalstack.admin.v2.NetworkService/Issues": Endpoint.unary(
+                    method=MethodInfo(
+                        name="Issues",
+                        service_name="metalstack.admin.v2.NetworkService",
+                        input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.issues,
                 ),
             },
             interceptors=interceptors,
@@ -203,6 +216,26 @@ class NetworkServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def issues(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Issues",
+                service_name="metalstack.admin.v2.NetworkService",
+                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesRequest,
+                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 
 
@@ -217,6 +250,8 @@ class NetworkServiceSync(Protocol):
     def delete(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def list(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def issues(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -273,6 +308,16 @@ class NetworkServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.list,
+                ),
+                "/metalstack.admin.v2.NetworkService/Issues": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="Issues",
+                        service_name="metalstack.admin.v2.NetworkService",
+                        input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.issues,
                 ),
             },
             interceptors=interceptors,
@@ -382,6 +427,26 @@ class NetworkServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.NetworkService",
                 input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest,
                 output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def issues(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Issues",
+                service_name="metalstack.admin.v2.NetworkService",
+                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesRequest,
+                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceIssuesResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
